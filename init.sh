@@ -27,7 +27,7 @@ mkdir templates
 echo "Create Files ..."
 
 echo '
-* 
+*
 	margin: 0;
 	padding: 0;
 ' > src/styles/base/_base.sass
@@ -76,7 +76,7 @@ gulp.task('icons', function(){
 
 gulp.task('babel', function () {
     return browserify({ entries: 'src/scripts/main.js', debug: true })
-        .transform(\"babelify\", { presets: [\"es2015\"] })
+        .transform(\"babelify\", { presets: [\"env\"] })
         .bundle()
         .on('error', function (err) {
         	console.log(err.toString());
@@ -113,7 +113,7 @@ gulp.task('default',['sass','image','babel', 'watch']);
 touch .babelrc
 
 echo '{
-  "presets": ["es2015"]
+  "presets": ["env"]
 }
 ' > .babelrc
 
@@ -121,6 +121,6 @@ echo '{
 echo "Init npm ..."
 npm init -y
 
-## NPM plugins 
+## NPM plugins
 echo "Install npm plugins ..."
-npm i gulp gulp-sass gulp-image gulp-uglify gulp-notify gulp-babel babel-core babel-cli babel-preset-env vinyl-source-stream vinyl-buffer babelify babel-preset-es2015 browserify vinyl-source-stream --save
+npm i gulp gulp-sass gulp-image gulp-uglify gulp-notify gulp-babel babel-core babel-cli babel-preset-env vinyl-source-stream vinyl-buffer babelify @babel/core @babel/preset-env browserify vinyl-source-stream --save
